@@ -1,6 +1,6 @@
 // landing-page.component.ts
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { fetchOneEntry, type BuilderContent } from '@builder.io/sdk-angular';
 import { Content } from '@builder.io/sdk-angular';
 
@@ -12,6 +12,8 @@ import { Content } from '@builder.io/sdk-angular';
   styleUrl: './landing-page.component.css',
 })
 export class LandingPageComponent {
+  constructor(private location: Location) {}
+
   // Add your Public API Key, specify the page model, and initialize the content variable
   apiKey = '3f3ebbcc055e4b3dbf539daa67c4a45e';
   model = 'page';
@@ -20,7 +22,7 @@ export class LandingPageComponent {
   locale = 'aa-DJ';
 
   async ngOnInit() {
-    const urlPath = window.location.pathname || '';
+    const urlPath = this.location.path() || '';
     // fetch the content for the current page based on the current URL
     const content = await fetchOneEntry({
       apiKey: this.apiKey,
