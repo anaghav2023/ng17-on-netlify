@@ -17,6 +17,8 @@ export class LandingPageComponent {
   model = 'page';
   content: BuilderContent | null = null;
 
+  locale = 'aa-DJ';
+
   async ngOnInit() {
     const urlPath = window.location.pathname || '';
     // fetch the content for the current page based on the current URL
@@ -26,6 +28,8 @@ export class LandingPageComponent {
       userAttributes: {
         urlPath,
       },
+      locale: this.locale,
+      options: { locale: this.locale },
     });
 
     if (!content) {
