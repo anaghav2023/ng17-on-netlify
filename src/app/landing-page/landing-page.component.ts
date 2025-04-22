@@ -1,8 +1,11 @@
 // landing-page.component.ts
 import { Component } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { fetchOneEntry, type BuilderContent } from '@builder.io/sdk-angular';
-import { Content } from '@builder.io/sdk-angular';
+import {
+  fetchOneEntry,
+  type BuilderContent,
+} from '@builder.io/sdk-angular/bundle/edge';
+import { Content } from '@builder.io/sdk-angular/bundle/edge';
 
 @Component({
   selector: 'app-landing-page',

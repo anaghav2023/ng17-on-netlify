@@ -4,16 +4,16 @@ import { AppComponent } from './app/app.component';
 import { builderDevTools } from '@builder.io/dev-tools/angular';
 
 bootstrapApplication(AppComponent, appConfig).catch((err) =>
-  console.error(err)
+  console.error(err),
 );
 
 builderDevTools().catch((err: Error) =>
-  console.error('Error starting dev tools:', err)
+  console.error('Error starting dev tools:', err),
 );
 
 function generateNonce(): string {
   return btoa(
-    String.fromCharCode(...crypto.getRandomValues(new Uint8Array(16)))
+    String.fromCharCode(...crypto.getRandomValues(new Uint8Array(16))),
   );
 }
 
