@@ -20,7 +20,7 @@
     "@angular/platform-server": "^17.0.0",
     "@angular/router": "^17.0.0",
     "@angular/ssr": "^17.0.0",
-    "@builder.io/sdk-angular": "0.18.14-3",
+    "@builder.io/sdk-angular": "0.18.14-5",
     "@builder.io/dev-tools": "^1.5.9",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
