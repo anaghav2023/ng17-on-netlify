@@ -7,6 +7,25 @@ import {
 } from '@builder.io/sdk-angular/bundle/edge';
 import { Content } from '@builder.io/sdk-angular/bundle/edge';
 
+function printRecursive(data: any) {
+  if (Array.isArray(data)) {
+    // If data is an array, loop through each element
+    data.forEach((item, index) => {
+      console.log(`Item ${index}:`);
+      printRecursive(item); // Recursive call
+    });
+  } else if (typeof data === 'object' && data !== null) {
+    // If data is an object, loop through each key-value pair
+    Object.keys(data).forEach((key) => {
+      console.log(`Key: ${key}`);
+      printRecursive(data[key]); // Recursive call
+    });
+  } else {
+    // If data is a primitive value, log it
+    console.log(data);
+  }
+}
+
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -33,9 +52,20 @@ export class LandingPageComponent {
       userAttributes: {
         urlPath,
       },
-      locale: this.locale,
-      options: { locale: this.locale },
+      options: {
+        evaluateCode: true, // Make server evaluate all code bindings
+        prerender: true,
+        flatten: true,
+      },
+      // locale: this.locale,
+      // options: { locale: this.locale },
     });
+
+    // Debug log the fetched content
+    console.log('Fetched content:'); // printRecursive(content?.data);
+    printRecursive(content);
+
+    // Further, check if the content is fully evaluated and structured correctly
 
     if (!content) {
       return;
