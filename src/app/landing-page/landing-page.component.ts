@@ -9,19 +9,16 @@ import { Content } from '@builder.io/sdk-angular/bundle/edge';
 
 function printRecursive(data: any) {
   if (Array.isArray(data)) {
-    // If data is an array, loop through each element
     data.forEach((item, index) => {
       console.log(`Item ${index}:`);
-      printRecursive(item); // Recursive call
+      printRecursive(item);
     });
   } else if (typeof data === 'object' && data !== null) {
-    // If data is an object, loop through each key-value pair
     Object.keys(data).forEach((key) => {
       console.log(`Key: ${key}`);
-      printRecursive(data[key]); // Recursive call
+      printRecursive(data[key]);
     });
   } else {
-    // If data is a primitive value, log it
     console.log(data);
   }
 }
@@ -38,34 +35,20 @@ export class LandingPageComponent {
 
   // Add your Public API Key, specify the page model, and initialize the content variable
   apiKey = '3f3ebbcc055e4b3dbf539daa67c4a45e';
-  model = 'page';
+  model = 'page-2';
   content: BuilderContent | null = null;
-
   locale = 'aa-DJ';
 
   async ngOnInit() {
     const urlPath = this.location.path() || '';
-    // fetch the content for the current page based on the current URL
     const content = await fetchOneEntry({
       apiKey: this.apiKey,
       model: this.model,
       userAttributes: {
         urlPath,
       },
-      options: {
-        evaluateCode: true, // Make server evaluate all code bindings
-        prerender: true,
-        flatten: true,
-      },
-      // locale: this.locale,
-      // options: { locale: this.locale },
+      options: { locale: this.locale },
     });
-
-    // Debug log the fetched content
-    console.log('Fetched content:'); // printRecursive(content?.data);
-    printRecursive(content);
-
-    // Further, check if the content is fully evaluated and structured correctly
 
     if (!content) {
       return;

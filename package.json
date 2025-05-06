@@ -23,7 +23,7 @@
     "@angular/router": "^17.0.0",
     "@angular/ssr": "^17.3.16",
     "@builder.io/dev-tools": "^1.5.9",
-    "@builder.io/sdk-angular": "0.19.1-2",
+    "@builder.io/sdk-angular": "0.19.3-3",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
